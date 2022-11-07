@@ -38,6 +38,7 @@ namespace BulkyBookWeb.Controllers
             {
                 _db.Categories.Add(category);
                 _db.SaveChanges();
+                TempData["success"] = "Category created successfully.";
                 return RedirectToAction("Index");
             }
             return View(category);
@@ -72,6 +73,7 @@ namespace BulkyBookWeb.Controllers
             {
                 _db.Categories.Update(category);
                 _db.SaveChanges();
+                TempData["success"] = "Category updated successfully.";
                 return RedirectToAction("Index");
             }
             return View(category);
@@ -94,6 +96,7 @@ namespace BulkyBookWeb.Controllers
             // if we were to pass the id instead of the category object we are not to forget the <input asp-for="Id" hidden/> in the form on the delete view  
             if (category == null) return NotFound();
             _db.Categories.Remove(category);
+            TempData["success"] = "Category deleted successfully.";
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
